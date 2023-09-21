@@ -23,12 +23,3 @@ export const authReducer = (state:IAuth = initialState, action:AuthAcionsTypes):
     }
 }
 
-// export const authSlice = createSlice({
-//     name:'auth',
-//     initialState:initialState,
-//     reducers:{
-//         setAuth: (state:IAuth, action:PayloadAction<boolean>) => {
-//             state.isAuth = action.payload
-//         }    
-//     }
-// })

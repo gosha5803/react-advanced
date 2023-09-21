@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {Stack, TextField, Grid, Button} from '@mui/material'
 import {LoadingButton} from '@mui/lab'
 
 const AuthForm = () => {
+    const [userName, setUserName] = useState<string>('')
+    const [password, setPassword] = useState<string>('')
+
+    const submitionHandler = (e:React.FormEvent<HTMLButtonElement>) => {
+        e.preventDefault()
+        
+    }
+
     return (
         <Stack spacing={2} 
         direction='column' 
@@ -18,7 +26,7 @@ const AuthForm = () => {
         borderColor='gray'
         >
             <TextField variant='outlined' label='userName'/>
-            <TextField variant='outlined' label='password'/>
+            <TextField variant='outlined' label='password' type='password'/>
             <LoadingButton 
             variant='contained'
             type='submit'
