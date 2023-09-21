@@ -1,11 +1,13 @@
 import { AppBar, Typography, Grid, Button, Toolbar, IconButton} from '@mui/material';
 import {AccountCircle} from '@mui/icons-material'
 import React from 'react';
+import { useTypedSelector } from '../hooks/useTypedSelector';
 
 
 
 const NavBar:React.FC = () => {
-    const isAuth = true
+    const {isAuth} = useTypedSelector(state => state.auth)
+
     return (
 
         <AppBar position="static">
