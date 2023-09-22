@@ -1,10 +1,8 @@
 import { EventActionTypes, EventTypes, setEvents, setGuests } from "./types";
 import {IEvent} from '../../../models/event'
 import { IUser } from "../../../models/user";
-import { AppDispatch } from "../../store";
 import { UserService } from "../../../api/UsersService";
 import { Dispatch } from "react";
-import axios from 'axios'
 
 export const EventActionCreators = {
     setEvents: (payload: IEvent[]): setEvents => ({type: EventTypes.SET_EVENTS, payload}),

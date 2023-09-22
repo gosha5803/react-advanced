@@ -1,4 +1,3 @@
-import axios from "axios";
 import { AuthAcionsTypes, AuthTypes, fetchUsers, fetchUsersFailed, fetchUsersSuccess, setIsAuth } from "./auth";
 import { IUser } from "../../../models/user";
 import { AppDispatch } from "../../store";
@@ -26,18 +25,18 @@ export const authActions = {
             dispatch(authActions.setIsLoading())
             setTimeout(async () => {
                 const res = await UserService.getUsers()
-            const users = res.data
-            console.log(users, username, password)
-            const authorizedUser = users.find(user => user.password == password && user.username == username)
-            console.log(authorizedUser)
-            if(authorizedUser) {
-                localStorage.setItem('auth', 'true')
-                localStorage.setItem('username', authorizedUser.username)
-                dispatch(authActions.setUser(authorizedUser))
-                dispatch(authActions.setAuth(true))
-            } else {
-                dispatch(authActions.setError('Неверное имя или пароль'))
-            }
+                const users = res.data
+                console.log(users, username, password)
+                const authorizedUser = users.find(user => user.password == password && user.username == username)
+                console.log(authorizedUser)
+                if(authorizedUser) {
+                    localStorage.setItem('auth', 'true')
+                    localStorage.setItem('username', authorizedUser.username)
+                    dispatch(authActions.setUser(authorizedUser))
+                    dispatch(authActions.setAuth(true))
+                } else {
+                    dispatch(authActions.setError('Неверное имя или пароль'))
+                }
             }, 1000)
         } catch (e) {
             dispatch(authActions.setError('Ошибка авторизации'))

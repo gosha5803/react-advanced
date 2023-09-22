@@ -3,7 +3,7 @@ import {Dayjs} from 'dayjs'
 
 export interface IEvent {
     author:string,
-    date:Dayjs,
+    date:string,
     guest:string,
     description:string
 }

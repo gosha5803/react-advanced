@@ -33,7 +33,7 @@ const AppRouter: react.FC = () => {
                     <Navigate to={RouteNames.LOGIN}/>
             </>
         }
-            </>
+        </>
     )
 }
 

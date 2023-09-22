@@ -1,5 +1,5 @@
 import {Button} from 'antd/es'
-import { Calendar, Layout, Row, Modal } from 'antd';
+import {Layout, Row, Modal } from 'antd';
 import React, { useEffect } from 'react';
 import EventForm from '../components/EventForm';
 import { useTypedSelector } from '../hooks/useTypedSelector';
@@ -18,8 +18,6 @@ const EventPage: React.FC = () => {
         fetchEvents(users.username)
     }, [])
 
-
-    
     const showModal = () => {
         setIsModalOpen(true);
     };

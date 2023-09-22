@@ -1,16 +1,17 @@
-import moment, {Moment} from 'moment'
+import moment, {Moment} from "moment";
 
 export const rules = {
-    required: (message: string = 'Поле обязательно дл язаполнения') => ({
-        required:true,
+    required: (message: string = "Обязательное поле") => ({
+        required: true,
         message
-    } ),
-    isDateAfter: (message:string) => () => ({
-        validator(_:any, value:Moment) {
-            if(value.isSameOrAfter(moment())) {
+    }),
+    isDateAfter: (message: string) => () => ({
+        validator(_: any, value: Moment) {
+            if (value.isAfter()) {
                 return Promise.resolve()
             }
-            return Promise.reject(new Error(message))
+            console.log('as')
+            return Promise.reject(new Error(message));
         }
     })
 }

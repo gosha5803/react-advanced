@@ -3,34 +3,27 @@ import {Form, Input, DatePicker, Row, Select, Button} from 'antd'
 import { IUser } from '../models/user';
 import { rules } from '../utils/rules';
 import { IEvent } from '../models/event';
-import { Moment } from 'moment';
 import { formatDate } from '../utils/date';
 import type {Dayjs} from 'dayjs'
 import { useTypedSelector } from '../hooks/useTypedSelector';
 
-
-
-interface FormProps {
+interface EventFormProps {
     guests:IUser[],
     onSubmit: (event: IEvent) => void
 }
 
-const EventForm: FC <FormProps> = ({guests, onSubmit}) => {
+const EventForm: FC <EventFormProps> = ({guests, onSubmit}) => {
     const [event, setEvent] = useState<IEvent>({
         author:'',
-        date:{} as Dayjs,
+        date:'',
         guest:'',
         description:''
     })
     const {users} = useTypedSelector(state => state.auth)
 
     const selectDate = (date: Dayjs | null) => {
-        // if (date) {
-        //     setEvent({...event, date:formatDate(date)})
-        // }
-        // console.log(event)
         if(date) {
-            setEvent({...event, date:date})
+            setEvent({...event, date:formatDate(date)})
         }
     }
 
@@ -45,29 +38,28 @@ const EventForm: FC <FormProps> = ({guests, onSubmit}) => {
             <Form.Item
                 label="Событие"
                 name="Событие"
-                rules={[{ required: true, message: 'Название события!' }]}
+                rules={[rules.required('Укажите название!')]}
                 >
                 <Input
                 onChange={(e) => setEvent({...event, description: e.target.value})}
                 />
             </Form.Item>
             <Form.Item
-                label='Выберите дату события'
-                name='Date'
-                rules={[rules.required(),
-                    // rules.isDateAfter('Нельзя жить в прошлом)')
+                label="Дата события"
+                name="date"
+                rules={[rules.required(), 
+                    rules.isDateAfter("Можно планровтаь лишь на будущее))")
                 ]}
             >
                 <DatePicker
                     onChange={(date) => selectDate(date)}
                 />
             </Form.Item>
+
             <Form.Item
-                
                 label='Выберите гостя'
                 rules={[{required:true}]}
                 >
-                
                     <Select
                     onChange={(guest:string) => setEvent({...event, guest:guest})}
                     defaultValue='Choose guest'
@@ -81,11 +73,10 @@ const EventForm: FC <FormProps> = ({guests, onSubmit}) => {
                             </Select.Option>
                                 )
                             }
-                        }
-                            )}
+                        })}
                     </Select>
-
             </Form.Item>
+
             <Row justify="end">
                 <Form.Item>
                     <Button type="primary" htmlType="submit">
