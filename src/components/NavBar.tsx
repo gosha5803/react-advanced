@@ -2,11 +2,13 @@ import { AppBar, Typography, Grid, Button, Toolbar, IconButton} from '@mui/mater
 import {AccountCircle} from '@mui/icons-material'
 import React from 'react';
 import { useTypedSelector } from '../hooks/useTypedSelector';
+import { useActions } from '../hooks/useActions';
 
 
 
 const NavBar:React.FC = () => {
     const {isAuth} = useTypedSelector(state => state.auth)
+    const {logout} = useActions()
 
     return (
 
@@ -45,7 +47,10 @@ const NavBar:React.FC = () => {
             >
                 <AccountCircle />
             </IconButton> */}
-            <Button color="inherit">Выйти</Button>
+            <Button 
+            color="inherit"
+            onClick={() => logout()}
+            >Выйти</Button>
             </>
             : 
             <>

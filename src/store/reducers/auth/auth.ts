@@ -1,4 +1,4 @@
-import { IUser } from "./user";
+import { IUser } from "../../../models/user";
 
 export interface IAuth {
     isAuth:boolean,
@@ -14,21 +14,21 @@ export enum AuthTypes {
     USER_FETCH_FAILED ='USER_FETCH_FAILED'
 }
 
-interface fetchUsers {
+export interface fetchUsers {
     type:AuthTypes.USER_FETCH_STARTED
 }
 
-interface fetchUsersFailed {
+export interface fetchUsersFailed {
     type:AuthTypes.USER_FETCH_FAILED,
     payload:string
 }
 
-interface fetchUsersSuccess {
+export interface fetchUsersSuccess {
     type: AuthTypes.USER_FETCH_SUCCEEDED,
     payload: IUser
 }
 
-interface setIsAuth {
+export interface setIsAuth {
     type:AuthTypes.SET_AUTH,
     payload:boolean
 }

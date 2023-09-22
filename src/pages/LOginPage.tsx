@@ -3,7 +3,7 @@ import AuthForm from '../components/AuthForm';
 
 const LoginPage:React.FC = () => {
     return (
-        <div
+        <
         // style={{
         //     height:'100%',
         //     position:'absolute',
@@ -13,7 +13,7 @@ const LoginPage:React.FC = () => {
         // }}
         >
             <AuthForm/>
-        </div>
+        </>
     );
 };
 
